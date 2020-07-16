@@ -1,6 +1,6 @@
 package com.company;
 
 public interface Receiver {
-    boolean connect(int port);
+    boolean connect();
     boolean disconnect();
 }

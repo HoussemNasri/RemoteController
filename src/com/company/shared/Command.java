@@ -1,6 +1,8 @@
 package com.company.shared;
 
-public class Command {
+import java.io.Serializable;
+
+public class Command implements Serializable {
     private CommandType commandType;
     private CommandContent commandContent;
 
