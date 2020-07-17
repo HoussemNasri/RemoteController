@@ -7,8 +7,11 @@ public class CommandExecutorFactory {
     public static CommandExecutor create(Command command) {
         if (command.getType() == CommandType.KEYBOARD)
             return new KeyboardCommandExecutor(command);
+        if (command.getType() == CommandType.MOUSE)
+            return new MouseCommandExecutor(command);
         if (command.getType() == CommandType.CMD)
             return new CmdCommandExecutor(command);
+
         return null;
     }
 }

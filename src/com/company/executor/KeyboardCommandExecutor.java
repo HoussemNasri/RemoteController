@@ -8,7 +8,6 @@ import com.company.shared.CommandContent;
 import com.company.shared.CommandType;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class KeyboardCommandExecutor implements CommandExecutor {
@@ -26,9 +25,9 @@ public class KeyboardCommandExecutor implements CommandExecutor {
 
     @Override
     public void execute() throws IncompatibleCommandException, UnsupportedCommandException {
-        CommandContent content = command.getContent();
+        CommandContent content = command().getContent();
         String commandName = content.getCommandName();
-        CommandType commandType = command.getType();
+        CommandType commandType = command().getType();
 
         if (commandType != CommandType.KEYBOARD)
             throw new IncompatibleCommandException(commandType.name(), CommandType.KEYBOARD.name());
@@ -37,17 +36,12 @@ public class KeyboardCommandExecutor implements CommandExecutor {
             throw new UnsupportedCommandException(commandName, getSupportedCommands());
 
         int keyCode = (int) content.getParams().get(0);
-     /*   try {
-            Thread.sleep(3000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
-      /*  if (commandName.equals(CommandConstants.PRESS_KEY)) {
+
+        if (commandName.equals(CommandConstants.PRESS_KEY)) {
             robot.keyPress(keyCode);
         } else if (commandName.equals(CommandConstants.RELEASE_KEY)) {
             robot.keyRelease(keyCode);
-        }*/
-
+        }
 
         System.out.println("Command Name : " + content.getCommandName());
         System.out.println("Params : " + content.getParams());
@@ -57,5 +51,10 @@ public class KeyboardCommandExecutor implements CommandExecutor {
     @Override
     public List<String> getSupportedCommands() {
         return List.of(CommandConstants.PRESS_KEY, CommandConstants.RELEASE_KEY);
+    }
+
+    @Override
+    public Command command() {
+        return this.command;
     }
 }

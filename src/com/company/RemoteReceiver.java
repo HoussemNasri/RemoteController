@@ -38,7 +38,7 @@ public class RemoteReceiver implements Receiver {
             }
 
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return false;
         }
         return true;
@@ -46,7 +46,8 @@ public class RemoteReceiver implements Receiver {
 
 
     @Override
-    public boolean disconnect() {
+    public boolean disconnect() throws IOException {
+        serverSocket.close();
         return false;
     }
 }

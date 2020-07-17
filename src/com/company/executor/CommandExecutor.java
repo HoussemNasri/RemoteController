@@ -9,4 +9,5 @@ import java.util.List;
 public interface CommandExecutor {
     public void execute() throws IncompatibleCommandException, UnsupportedCommandException;
     public List<String> getSupportedCommands();
+    public Command command();
 }

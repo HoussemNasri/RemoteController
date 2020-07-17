@@ -22,4 +22,9 @@ public class CmdCommandExecutor implements CommandExecutor {
     public List<String> getSupportedCommands() {
         return null;
     }
+
+    @Override
+    public Command command() {
+        return this.command;
+    }
 }
